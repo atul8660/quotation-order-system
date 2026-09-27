@@ -1,0 +1,18 @@
+const express = require("express");
+const router = express.Router();
+const {
+    createQuotation,
+    getQuotations,
+    getQuotationById,
+    updateQuotation,
+    deleteQuotation,
+    submitQuotation,
+    sendQuotation,
+    acceptQuotation
+} = require("../controllers/quotationController");
+
+// We'll bring in approve, reject, convert from their respective controllers or update quotationController later.
+// For now, let's route them to quotationController if they exist, but we will define them in approval/order controllers or update here.
+
+// I will just require the functions. Since approve/reject/convert are not in quotationController yet, 
+// I will just leave the routes commented or implement them. Let's add them to quotationController via replace_file_content.

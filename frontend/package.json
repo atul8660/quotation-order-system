@@ -1,0 +1,9 @@
+{
+  "name": "quotation-to-order-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Quotation-to-Order System",
+  "scripts": {
+    "dev": "npx -y serve ."
+  },
+  "dependencies": {}
+}

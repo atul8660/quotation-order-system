@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users - Quotation System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <span>Q2O System</span>
+            <h2>Quotation to Order</h2>
+        </div>
+        <nav class="sidebar-nav" id="navLinks">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="customers.html">Customers</a>
+            <a href="products.html">Products</a>
+            <a href="quotations.html">Quotations</a>
+            <a href="orders.html">Orders</a>
+            <a href="users.html" id="nav-users" style="display: none;" class="active">Users</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">--</div>
+                <div>
+                    <div class="user-name" id="sidebarUserName">User</div>
+                    <div class="user-role" id="sidebarUserRole">Role</div>
+                </div>
+            </div>
+            <button onclick="logout()" class="btn btn-ghost" style="width: 100%; font-size: 0.8rem;">Sign Out</button>
+        </div>
+    </aside>
+    <div class="main-content">
+    
+
+    <div class="container">
+        <div class="flex-between">
+            <h1>User Management</h1>
+            <button onclick="openModal('userModal')" class="btn btn-primary">Add New User</button>
+        </div>
+        
+        <div class="glass" style="padding: 1.5rem; margin-top: 1.5rem;">
+            <p style="margin-bottom: 1rem;">As an Admin, you can add new Sales agents, Managers, or other Admins to the system.</p>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTable">
+                        <!-- Users will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="userModal" class="modal">
+        <div class="glass modal-content">
+            <h2 style="margin-bottom: 1.5rem;">Add New User</h2>
+            <form id="userForm">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="userName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="userEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="userPassword" class="form-control" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <select id="userRole" class="form-control" required>
+                        <option value="SALES">Sales Executive</option>
+                        <option value="MANAGER">Manager</option>
+                        <option value="ADMIN">Admin</option>
+                    </select>
+                </div>
+                <div class="flex-between" style="margin-top: 2rem;">
+                    <button type="button" class="btn" style="background: rgba(255,255,255,0.1); color: white;" onclick="closeModal('userModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/users.js"></script>
+</body>
+</html>

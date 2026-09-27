@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotations - Quotation System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <span>Q2O System</span>
+            <h2>Quotation to Order</h2>
+        </div>
+        <nav class="sidebar-nav" id="navLinks">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="customers.html">Customers</a>
+            <a href="products.html">Products</a>
+            <a href="quotations.html" class="active">Quotations</a>
+            <a href="orders.html">Orders</a>
+            <a href="users.html" id="nav-users" style="display: none;">Users</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">--</div>
+                <div>
+                    <div class="user-name" id="sidebarUserName">User</div>
+                    <div class="user-role" id="sidebarUserRole">Role</div>
+                </div>
+            </div>
+            <button onclick="logout()" class="btn btn-ghost" style="width: 100%; font-size: 0.8rem;">Sign Out</button>
+        </div>
+    </aside>
+    <div class="main-content">
+    
+
+    <div class="container">
+        <div class="flex-between">
+            <h1>Quotations</h1>
+            <a href="quotation-details.html" id="create-quote-btn" class="btn btn-primary">Create Quotation</a>
+        </div>
+        
+        <div class="glass" style="padding: 1.5rem; margin-top: 1.5rem;">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Customer</th>
+                            <th>Total Amount</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="quotationsTable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Manager Approval Modal -->
+    <div id="approveModal" class="modal">
+        <div class="glass modal-content" style="max-width: 600px;">
+            <h2>Review Quotation</h2>
+            <div id="quoteSummary" style="margin: 1.5rem 0; font-size: 0.875rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; max-height: 250px; overflow-y: auto;">
+                Loading details...
+            </div>
+            <form id="approveForm" style="margin-top: 1rem;">
+                <input type="hidden" id="approveQuoteId">
+                <div class="form-group">
+                    <label>Comments</label>
+                    <textarea id="approveComments" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="flex-between">
+                    <button type="button" class="btn btn-danger" onclick="submitReview('REJECTED')">Reject</button>
+                    <button type="button" class="btn btn-success" onclick="submitReview('APPROVED')">Approve</button>
+                </div>
+                <button type="button" class="btn btn-ghost" style="width: 100%; margin-top: 1rem;" onclick="closeModal('approveModal')">Cancel</button>
+            </form>
+        </div>
+    </div>
+    <!-- View Quotation Modal -->
+    <div id="viewModal" class="modal">
+        <div class="glass modal-content" style="max-width: 600px;">
+            <h2>Quotation Details</h2>
+            <div id="viewQuoteSummary" style="margin: 1.5rem 0; font-size: 0.875rem; background: var(--bg-primary); padding: 1rem; border-radius: 8px; max-height: 350px; overflow-y: auto;">
+                Loading details...
+            </div>
+            <button type="button" class="btn btn-ghost" style="width: 100%; margin-top: 1rem;" onclick="closeModal('viewModal')">Close</button>
+        </div>
+    </div>
+    </div>
+
+
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/quotations.js"></script>
+</body>
+</html>
